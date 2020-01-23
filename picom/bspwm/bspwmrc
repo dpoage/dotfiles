@@ -1,0 +1,36 @@
+#! /bin/bash
+
+
+# get a wallpaper to use on all screens
+## deprecated for pywal
+#WALL=$(find "${HOME}/Documents/wallpapers/" -type f | sort -R | tail -1)
+
+sxhkd &
+#feh --no-fehbg --bg-scale "$WALL" &
+picom &
+sudo NetworkManager &
+
+# wallpaper
+wal -e -i "${HOME}/Documents/wallpapers/"
+source "${HOME}/.cache/wal/colors.sh"
+
+
+$HOME/.config/polybar/launch.sh
+
+bspc monitor eDP-1 -d I II III
+bspc monitor DP-1-1 -d IV V VI
+bspc monitor DP-1-2 -d VII VIII IX
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config wm_name LG3D # fix for pycharm
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off

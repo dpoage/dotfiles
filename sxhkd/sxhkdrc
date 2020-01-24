@@ -134,3 +134,10 @@ ctrl + alt + c
 
 ctrl + alt + v
   xclip -o
+
+ctrl + alt + p
+  scrot
+
+# get a new wallpaper
+ctrl + alt + w
+  wal -e -i ~/Documents/wallpapers
